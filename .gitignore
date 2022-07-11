@@ -1,0 +1,17 @@
+debug.log
+.installed.cfg
+bin
+develop-eggs
+dist
+downloads
+eggs
+parts
+src/*.egg-info
+lib
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+lib64
+# pyenv
+.python-version
+.pyc
