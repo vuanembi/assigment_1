@@ -4,31 +4,6 @@ from re import I
 import pandas as pd
 import json
 import os
-def read_json(folder_path, file_name: str) -> pd.DataFrame:
-    """Convert a JSON file to pandas object.
-    Args:
-        folder_path (str): The folder location
-        file_name (str) : file name
-    Returns:
-        DataFrame
-    """
-    df = pd.read_json(os.path.join(folder_path, file_name))
-    return df
-
-
-def read_folder(folder_path: str) -> pd.DataFrame:
-    """Convert folder contains JSON files to pandas object.
-    Args:
-        folder_path (str): The folder location
-    Returns:
-        DataFrame
-    """
-    dfs = []
-    for file in os.listdir(folder_path):
-        if file.endswith(("json")):
-            df = read_json(folder_path, file)
-            dfs.append(df)
-    return pd.concat(dfs)
 
 def json_to_list_of_dict(folder_path, file_name):
     """Convert a JSON file to list of dictionary.
@@ -50,10 +25,9 @@ def folder_to_csv(folder_path):
         CSV file
     """
     to_csv = []
-    for file in os.listdir(folder_path):
-        if file.endswith(("json")):
-            data = json_to_list_of_dict(folder_path, file)
-            to_csv.append(data)
+    for file in [file for file in os.listdir(folder_path) if file.endswith(("json"))]:
+        data = json_to_list_of_dict(folder_path, file)
+        to_csv.append(data)
     
     keys = to_csv[0][0].keys()
     folder_name = os.path.basename(folder_path)
