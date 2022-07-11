@@ -1,10 +1,8 @@
-from assigment_1 import read_json 
+from assigment_1 import read_json
 import os
 
 def main(folder_path):
-    folder_name = os.path.basename(folder_path)
-    df = read_json.read_folder(folder_path=folder_path)
-    df.to_csv(f'{folder_name}.csv', index=None)
+    read_json.folder_to_csv(folder_path)
 
 if __name__ == "__main__":
     main('C://Users/Admin/Downloads/properties')
