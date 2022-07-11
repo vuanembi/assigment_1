@@ -9,10 +9,10 @@ def main(folder_path):
 
 
 if __name__ == "__main__":
-    os.chdir('../properties')
-    cwd = Path.cwd()
-    main(cwd)
+    script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
+    rel_path = '/Users/Admin/OneDrive/Intern Vua Nệm/Python/properties'
+    abs_file_path = os.path.join(script_dir, rel_path)
+    main(abs_file_path)
     
-    
-    
+
 
