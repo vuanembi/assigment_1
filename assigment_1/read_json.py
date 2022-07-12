@@ -20,8 +20,5 @@ def read_folder(folder_path: str) -> pd.DataFrame:
     Returns:
         DataFrame
     """
-    dfs = []
-    for file in [file for file in os.listdir(folder_path) if file.endswith(("json"))]:
-        df = read_json(folder_path, file)
-        dfs.append(df)
+    dfs = [read_json(folder_path, file)  for file in os.listdir(folder_path) if file.endswith(("json"))]
     return pd.concat(dfs)
